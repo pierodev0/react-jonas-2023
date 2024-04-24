@@ -1,14 +1,5 @@
 import { useState } from "react";
 import "./styles.css";
-
-export default function App() {
-  return (
-    <div className="App">
-      <FlashCards />
-    </div>
-  );
-}
-
 const questions = [
   {
     id: 3457,
@@ -42,22 +33,25 @@ const questions = [
     answer: "Controlled element",
   },
 ];
+export default function App() {
+  return (
+    <div className="App">
+      <FlashCards />
+    </div>
+  );
+}
 
 function FlashCards() {
-  const [selectedId, setSelectedId] = useState(null);
+  const [selectedId, setSelectedId] = useState(null)
 
   function handleClick(id){
     setSelectedId(id !== selectedId ? id : null)
   }
   return (
     <div className="flashcards">
-      {questions.map((card) => (
-        <div
-          key={card.id}
-          className={`flashcard ${selectedId === card.id ? "selected" : ""}`}
-          onClick={()=> handleClick(card.id)}
-        >
-          {selectedId === card.id ? card.answer : card.question}
+      {questions.map((question) => (
+        <div key={question.id} className={`flashcard ${question.id === selectedId ? "selected": ""}`} onClick={() => handleClick(question.id)}>
+          <p>{question.id === selectedId ? question.answer : question.question}</p>
         </div>
       ))}
     </div>
