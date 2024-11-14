@@ -10,7 +10,7 @@ function App() {
   const [isOpen, setIsOpen] = useState(true);
 
   function handlePrevious() {
-    if (step > 1) setStep(step - 1);
+    if (steps > 1) setStep(step - 1);
   }
 
   function handleNext() {
